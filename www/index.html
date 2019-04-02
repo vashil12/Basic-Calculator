@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>The Calculator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="js/jquery.mobile-1.4.5.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.4.5.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#btncalc').click(function(){
+			$('#number1').html($('#textinput1-hide').val());
+			$('#operatordis').html($('#operations :selected').text());
+			$('#number2').html($('#textinput2-hide').val());
+
+
+			var num1 = ($('#textinput1-hide').val());
+			var num2 = ($('#textinput2-hide').val());
+			var opt =($('#operations :selected').text());
+
+
+
+			if(opt=="+"){
+				$('#result').html(parseFloat(num1) + parseFloat(num2));
+				}else if(opt=="-"){
+				$('#result').html(parseFloat(num1) - parseFloat(num2));	
+				}else if(opt=="*"){
+				$('#result').html(parseFloat(num1) * parseFloat(num2));	
+				}else if(opt=="/"){
+				$('#result').html(parseFloat(num1) / parseFloat(num2));	
+				}else{
+					alert("cannot be calculated");
+				}
+
+		})
+	})
+</script>
+</head>
+<body>
+
+	<!------------------------------------ /Home Page -------------------------------------------------------------------------------------------------->
+	<div data-role="page" id="homepage">
+		<div data-role="header" style="background-color: #0C8DB3; color: white;">
+			<h1>Home</h1>		
+				
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#homepage" class="ui-btn-active ui-state-persist" data-icon="home">Home</a></li>
+					<li><a href="#pagecalc" data-icon="grid">Calculator</a></li>
+					<li><a href="#pageinfo"  data-icon="info">Info</a></li>
+				</ul>				
+			</div>
+		</div>
+
+		<div role="main" class="ui-content" style="text-align: center; font-family: sans-serif; font-size: 18px; background-color: #DADADA;" >
+			<p>This is a jQuery mobile exercise which provides the user with a calculator for basic mathematical operations. </p>
+
+			<p>Here the user will be able to perform operations like addition, subtraction, multiplication and division of ONLY 2 numbers at a time.</p>
+			
+		</div>
+
+		<div data-role="footer" style="background-color: #0C8DB3; color: white;">
+			<h1> &copy; Developed by BCNS17A</h1>
+
+			
+		</div>
+
+	</div>
+
+	<!------------------------------------- /Calculator page --------------------------------------------------------------------------------------------->
+
+	<div data-role="page" id="pagecalc">		
+		<div data-role="header" style="background-color: #0C8DB3; color: white;">
+			<h1>Simple Calculator </h1>
+				<div data-role="navbar">
+					<ul>
+					<li><a href="#homepage" data-icon="home">Home</a></li>
+					<li><a href="#pagecalc" class="ui-btn-active ui-state-persist" data-icon="grid">Calculator</a></li>
+					<li><a href="#pageinfo"  data-icon="info">Info</a></li>
+				</ul>
+				</div>
+		</div>
+
+		<div role="main" class="ui-content" style="text-align: center; font-family: sans-serif; font-size: 18px; background-color: #DADADA;">
+
+			<label for="textinput1-hide" class="ui-hidden-accessible">first value</label>
+				<input type="number" name="textinput1-hide" id="textinput1-hide" placeholder="please input first value" value="" data-clear-btn="true">
+			
+
+			<label for="select-choice-a" class="select">Select operation</label>
+			<select name="select-choice-a" id="operations" data-native-menu="false">
+				<option value="+">+</option>
+				<option value="-">-</option>
+				<option value="*">*</option>
+				<option value="/">/</option>
+			</select>
+			<div style="height: 10px;">
+			</div>
+
+				<label for="textinput2-hide" class="ui-hidden-accessible">second value</label>
+				<input type="number" name="textinput2-hide" id="textinput2-hide" placeholder="please input second value" value="" data-clear-btn="true">
+
+			<div style="height: 10px;">
+			</div>
+
+			<a href="#pageresult" class="ui-btn ui-shadow ui-corner-all" id="btncalc">Calculate</a>
+		</div>
+
+		<div data-role="footer" style="background-color: #0C8DB3; color: white;">
+			<h1> &copy; Developed by BCNS17A</h1>		
+		</div>
+
+	</div>
+	<!----------------------------------------- /result page --------------------------------------------------------------------------------------------->
+<div data-role="page" id="pageresult">		
+		<div data-role="header" style="background-color: #0C8DB3; color: white;">
+			<h1>Result </h1>
+				<div data-role="navbar">
+					<ul>
+					<li><a href="#homepage" data-icon="home">Home</a></li>
+					<li><a href="#pagecalc" class="ui-btn-active ui-state-persist" data-icon="grid">Calculator</a></li>
+					<li><a href="#pageinfo"  data-icon="info">Info</a></li>
+				</ul>
+				</div>
+		</div>
+
+		<div role="main" class="ui-content" style=" font-family: sans-serif; font-size: 18px; background-color: #DADADA;">
+
+			<label>Operation:</label>
+			<div style="height: 10px;"></div>
+			<div id="number1" style="display: inline-block;"></div>
+			<div id="operatordis" style="display: inline-block;"></div>
+			<div id="number2" style="display: inline-block;"></div>
+			<div style="height: 25px;"></div>
+			<label> Result:</label>
+			<div style="height: 10px;"></div>
+			<div id="result" style="font-weight: bold;"></div>
+
+			<a href="#pagecalc" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-back">Back</a>
+		</div>
+
+		<div data-role="footer" style="background-color: #0C8DB3; color: white;">
+			<h1> &copy; Developed by BCNS17A</h1>		
+		</div>
+
+	</div>
+
+
+	<!-------------------------------------- /Information page ----------------------------------------------------------------------------------------->
+	<div data-role="page" id="pageinfo">
+		<div data-role="header" style="background-color: #0C8DB3; color: white;">
+			<h1>Info</h1>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#homepage"  data-icon="home">Home</a></li>
+					<li><a href="#pagecalc" data-icon="grid">Calculator</a></li>
+					<li><a href="#pageinfo" class="ui-btn-active ui-state-persist" data-icon="info">Info</a></li>
+				</ul>
+				
+			</div>
+		</div>
+
+		<div role="main" class="ui-content" style="text-align: center; font-family: sans-serif; font-size: 18px; background-color: #DADADA;">
+			<p>This is the info section and it will provide information about how to use the calculator. Assume you need to do the following calculation: 10 + 25</p>
+			
+			<p style="text-align: left;"> Step 1: insert the first number of your operation in the first input. i.e 10</p>
+
+			<p style="text-align: left;"> Step 2: Choose the operation that you want to do from the list. for this scenario it will be +</p>
+
+			<p style="text-align: left;"> Step 3: insert the second number of your operation in the second input. i.e 25</p>
+
+			<p style="text-align: left;"> Step 4: Press the calculate button to view the result</p>
+
+			<p>just after clicking the calculate button, the full operation and the result will be displayed. you need to press the back button to perform another calculation </p>
+
+			
+			<div style="width: 250px; display: inline-block;">
+				<a href="#popupDialog" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-icon-info ui-btn-icon-left ui-shadow ui-corner-all">More Info</a>
+				<div data-role="popup" id="popupDialog" data-overlay-theme="a" data-theme="a" style="max-width: 500px;">
+					<div data-role="header" data-theme="a">
+						<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-icon-delete ui-btn-icon-notext ui-btn-left">close</a>
+						<h1>More Info</h1>
+
+					</div>
+					<div role="main" class="ui-content" style="text-align: center;">
+						<h3 class="ui-title">You have requested more information about the app.</h3>
+						<a href="#pageinfo" data-dismissible="true" class="ui-btn ui-corner-all ui-shadow ui-btn-icon-left ui-icon-back">Dismiss</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		<div data-role="footer" style="background-color: #0C8DB3; color: white;">
+			<h1> &copy; Developed by BCNS17A</h1>
+
+			
+		</div>
+
+	</div>	
+		
+
+	</div>
+</body>
+</html>	
